@@ -91,13 +91,11 @@ export interface TableMetadata {
   badges: Badge[];
   cluster: string;
   columns: TableColumn[];
-
   database: string;
   is_editable: boolean;
   is_view: boolean;
   key: string;
   last_updated_timestamp: number;
-  lineage: Lineage;
   schema: string;
   name: string;
   description: string;
@@ -123,18 +121,20 @@ export interface Watermark {
 }
 
 export interface LineageItem {
+  badges?: string[];
+  cluster: string;
+  database: string;
   key: string;
   level: number;
-  source: string;
-  badges?: string[];
+  schema: string;
+  table: string;
   usage: number;
 }
 
 export interface Lineage {
   // key: string;
-  // direction: string;
-  upstream_entities: LineageItem[];
   downstream_entities: LineageItem[];
+  upstream_entities: LineageItem[];
 }
 
 export interface ColumnLineageMap {
@@ -143,11 +143,9 @@ export interface ColumnLineageMap {
 
 export interface TableLineageParams {
   key: string;
-  direction: string;
 }
 
 export interface ColumnLineageParams {
   key: string;
   column: string;
-  direction: string;
 }
