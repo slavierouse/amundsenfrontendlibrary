@@ -30,7 +30,7 @@ import {
 } from 'interfaces';
 
 import BadgeList from 'features/BadgeList';
-import ColumnLineageList from 'features/ColumnList/ColumnLineage';
+import ColumnLineage from 'features/ColumnList/ColumnLineage';
 import ColumnType from './ColumnType';
 import ColumnDescEditableText from './ColumnDescEditableText';
 import ColumnStats from './ColumnStats';
@@ -68,7 +68,7 @@ export interface DispatchFromProps {
   ) => GetColumnLineageRequest;
 }
 
-type ColumnListProps = ComponentProps & DispatchFromProps;
+export type ColumnListProps = ComponentProps & DispatchFromProps;
 
 type ContentType = {
   title: string;
@@ -189,7 +189,7 @@ const ExpandedRowComponent: React.FC<ExpandedRowProps> = (
       )}
       {rowValue.stats && <ColumnStats stats={rowValue.stats} />}
       {isColumnListLineageEnabled() && (
-        <ColumnLineageList
+        <ColumnLineage
           tableKey={rowValue.tableKey}
           columnName={rowValue.name}
         />
